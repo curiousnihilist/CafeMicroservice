@@ -31,8 +31,6 @@ public class CafeController {
 	@Autowired
 	private CafeService cafeService;
 	
-	@Autowired
-	private MenuService menuService;
 	
 	/**
 	 * Post Mapping method for adding new cafe.
