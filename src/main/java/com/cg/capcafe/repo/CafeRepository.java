@@ -4,13 +4,17 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import com.cg.capcafe.dto.Cafe;
 import com.cg.capcafe.exception.CafeNotFoundException;
 
+@Repository
 public interface CafeRepository extends JpaRepository<Cafe, Integer> {
 	
+	@Query("SELECT c FROM Cafe c WHERE c.name LIKE ?1")
 	List<Cafe> findByNameContainigIgnoreCase(String name);
+	
 	List<Cafe> findByLocation(String location);
 	
 	@Query("SELECT c FROM Cafe c WHERE c.avgRating BETWEEN ?1 AND ?2")

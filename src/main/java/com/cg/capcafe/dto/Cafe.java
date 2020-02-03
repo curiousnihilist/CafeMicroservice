@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -48,14 +50,15 @@ public class Cafe {
 	@Column(name= "avg_price")
 	private int avgPrice;
 	
-	@OneToMany(fetch = FetchType.EAGER,
+	@OneToMany(fetch = FetchType.LAZY,
 			   cascade = CascadeType.ALL)
 	@JoinColumn(name = "cafe_id")
 	private List<Review> reviews;
 	
-	@OneToMany(fetch = FetchType.EAGER,
+	@ManyToMany(fetch = FetchType.EAGER,
 			   cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-	@JoinColumn(name = "item_id")
+	@JoinTable(name = "cafe_item", joinColumns = {@JoinColumn(name="cafe_id", referencedColumnName = "cafe_id")},
+	 inverseJoinColumns = {@JoinColumn(name = "item_id", referencedColumnName = "item_id")})
 	private List<FoodItem> menu;
 
 	public Cafe(int cafeId, String name, String location, String owner, List<String> cuisine, double account,

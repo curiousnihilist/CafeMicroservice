@@ -1,5 +1,10 @@
 package com.cg.capcafe.dto;
 
+/**
+ * DTO class for login
+ * @author akasverm
+ *
+ */
 public class Login {
 	
 	private int capgeminiId;

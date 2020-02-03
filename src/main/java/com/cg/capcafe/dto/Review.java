@@ -11,6 +11,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * Entity class for storing Cafe review details.
+ * @author Akash Verma
+ *
+ */
 @Entity
 @Table(name = "review")
 public class Review {

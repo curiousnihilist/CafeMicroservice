@@ -1,14 +1,26 @@
 package com.cg.capcafe.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.Enumerated;import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+/**
+ * Entity class for storing food item details.
+ * @author akasverm
+ *
+ */
 @Entity
 @Table(name = "food_item")
 public class FoodItem {
@@ -26,6 +38,14 @@ public class FoodItem {
 	private String name;
 	
 	private double price;
+	
+	@JsonIgnore
+	@ManyToMany(mappedBy = "cart")
+	private List<Order> orders = new ArrayList<Order>();
+	
+	@JsonIgnore
+	@ManyToMany(mappedBy = "menu")
+	private List<Cafe> cafe;
 
 	public int getItemId() {
 		return itemId;

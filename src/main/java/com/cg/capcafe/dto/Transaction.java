@@ -13,6 +13,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * Entity class for storing transaction details.
+ * @author Akash Verma
+ *
+ */
 @Entity
 @Table(name = "transaction")
 public class Transaction {

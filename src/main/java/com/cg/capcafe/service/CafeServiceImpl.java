@@ -79,6 +79,7 @@ public class CafeServiceImpl implements CafeService{
 
 	@Override
 	public List<Cafe> searchByName(String name) throws CafeNotFoundException {
+		name = "%"+name+"%";
 		List<Cafe> cafes = cafeRepo.findByNameContainigIgnoreCase(name);
 		if(cafes.isEmpty())
 			throw new CafeNotFoundException("No cafe found by the name : "+name);

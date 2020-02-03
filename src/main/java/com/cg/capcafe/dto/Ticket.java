@@ -15,6 +15,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * Entity class for storing raised ticket details.
+ * @author Akash Verma
+ *
+ */
 @Entity
 @Table(name = "ticket")
 public class Ticket {

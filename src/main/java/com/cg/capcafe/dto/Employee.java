@@ -14,7 +14,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+/**
+ * Entity class for storing employee details.
+ * @author Akash Verma
+ *
+ */
 @Entity
 @Table(name = "employee")
 public class Employee {
