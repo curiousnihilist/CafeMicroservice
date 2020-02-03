@@ -64,44 +64,84 @@ public class CafeController {
 		return cafeService.deleteCafe(cafeId);
 	}
 	
+	
+	/**
+	 * Get Mapping method for fetch all cafes. 
+	 * @return List of Cafe
+	 * @throws CafeNotFoundException
+	 */
 	@GetMapping(value = "/get-all-cafe")
 	public List<Cafe> getAllCafe() throws CafeNotFoundException{
 		return cafeService.getAllCafe();
 	}
 	
+	/**
+	 * Get mapping method for fetching Cafe Details by cafeId
+	 * @param cafeId
+	 * @return list of Cafe
+	 * @throws CafeNotFoundException
+	 */
 	@GetMapping(value = "/get-by-id")
 	public Cafe getCafeById(@RequestParam int cafeId) throws CafeNotFoundException{
 		return cafeService.searchById(cafeId);
 	}
 	
+	/**
+	 * Get Mapping method for fetching Cafe details by name.
+	 * @param name
+	 * @return List of cafe
+	 * @throws CafeNotFoundException
+	 */
 	@GetMapping(value = "/get-by-name")
 	public List<Cafe> getCafeByName(@RequestParam String name) throws CafeNotFoundException{
 		return cafeService.searchByName(name);
 	}
 	
+	/**
+	 * Get Mapping method for fetching all cafes by location.
+	 * @param location
+	 * @return List of cafe
+	 * @throws CafeNotFoundException
+	 */
 	@GetMapping(value = "/get-by-location")
 	public List<Cafe> getCafeByLocation(@RequestParam String location) throws CafeNotFoundException{
 		return cafeService.searchByLocation(location);
 	}
 	
+	/**
+	 * Get Mapping method for fetching cafes by dish.
+	 * @param dish
+	 * @return List of Cafe
+	 * @throws CafeNotFoundException
+	 */
 	@GetMapping(value = "/get-by-dish")
 	public List<Cafe> getCafeByDish(@RequestParam String dish) throws CafeNotFoundException{
 		return cafeService.searchByMenu(dish);
 	}
 	
+	/**
+	 * Get Mapping method for fetching cafes by rating range
+	 * @param min rating
+	 * @param max rating
+	 * @return List of cafe
+	 * @throws CafeNotFoundException
+	 */
 	@GetMapping(value = "/get-by-rating-range")
 	public List<Cafe> getCafeByRatingRange(@RequestParam int min, @RequestParam int max) throws CafeNotFoundException{
 		return cafeService.searchByRatings(min, max);
 	}
 	
+	/**
+	 * Get Mapping method for fetching cafes by price range.
+	 * @param min price
+	 * @param max price
+	 * @return List of cafe
+	 * @throws CafeNotFoundException
+	 */
 	@GetMapping(value = "/get-by-price-range")
 	public List<Cafe> getCafeByPriceRange(@RequestParam double min, @RequestParam double max) throws CafeNotFoundException{
 		return cafeService.searchByPricing(min, max);
 	}
-	
-	
-	
-	
 	
 
 }
