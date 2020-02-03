@@ -18,10 +18,10 @@ public interface CafeRepository extends JpaRepository<Cafe, Integer> {
 	List<Cafe> findByLocation(String location);
 	
 	@Query("SELECT c FROM Cafe c WHERE c.avgRating BETWEEN ?1 AND ?2")
-	List<Cafe> findByRatingRange(int min, int max) throws CafeNotFoundException;
+	List<Cafe> findByRatingRange(double min, double max) throws CafeNotFoundException;
 	
 	@Query("SELECT c FROM Cafe c WHERE c.avgPrice BETWEEN ?1 AND ?2")
-	List<Cafe> findByPriceRange(double min, double max) throws CafeNotFoundException;
+	List<Cafe> findByPriceRange(int min, int max) throws CafeNotFoundException;
 	
 	@Query("SELECT c FROM Cafe c JOIN FETCH c.menu m WHERE m.name = ?1")
 	List<Cafe> findByMenu(String foodItem);

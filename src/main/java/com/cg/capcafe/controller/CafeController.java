@@ -58,7 +58,7 @@ public class CafeController {
 	 * @return Boolean
 	 */
 	@DeleteMapping(value = "/delete-cafe")
-	public boolean deleteCafe(@RequestBody int cafeId) throws CafeNotFoundException{
+	public boolean deleteCafe(@RequestParam int cafeId) throws CafeNotFoundException{
 		return cafeService.deleteCafe(cafeId);
 	}
 	
@@ -125,7 +125,7 @@ public class CafeController {
 	 * @throws CafeNotFoundException
 	 */
 	@GetMapping(value = "/get-by-rating-range")
-	public List<Cafe> getCafeByRatingRange(@RequestParam int min, @RequestParam int max) throws CafeNotFoundException{
+	public List<Cafe> getCafeByRatingRange(@RequestParam double min, @RequestParam double max) throws CafeNotFoundException{
 		return cafeService.searchByRatings(min, max);
 	}
 	
@@ -137,7 +137,7 @@ public class CafeController {
 	 * @throws CafeNotFoundException
 	 */
 	@GetMapping(value = "/get-by-price-range")
-	public List<Cafe> getCafeByPriceRange(@RequestParam double min, @RequestParam double max) throws CafeNotFoundException{
+	public List<Cafe> getCafeByPriceRange(@RequestParam int min, @RequestParam int max) throws CafeNotFoundException{
 		return cafeService.searchByPricing(min, max);
 	}
 	

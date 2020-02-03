@@ -1,7 +1,9 @@
 package com.cg.capcafe.dto;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,11 +43,11 @@ public class FoodItem {
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "cart")
-	private List<Order> orders = new ArrayList<Order>();
+	private Set<Order> orders = new HashSet<Order>();
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "menu")
-	private List<Cafe> cafe;
+	private Set<Cafe> cafe;
 
 	public int getItemId() {
 		return itemId;

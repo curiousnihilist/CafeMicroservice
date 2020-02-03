@@ -54,7 +54,7 @@ public class CafeServiceImpl implements CafeService{
 	}
 
 	@Override
-	public List<Cafe> searchByPricing(double min, double max) throws CafeNotFoundException {
+	public List<Cafe> searchByPricing(int min, int max) throws CafeNotFoundException {
 		List<Cafe> cafes = cafeRepo.findByPriceRange(min, max);
 		if(cafes.isEmpty())
 			throw new CafeNotFoundException("No cafe found with specified price range : "+min+"-"+max);
@@ -62,7 +62,7 @@ public class CafeServiceImpl implements CafeService{
 	}
 
 	@Override
-	public List<Cafe> searchByRatings(int min, int max) throws CafeNotFoundException {
+	public List<Cafe> searchByRatings(double min, double max) throws CafeNotFoundException {
 		List<Cafe> cafes = cafeRepo.findByRatingRange(min, max);
 		if(cafes.isEmpty())
 			throw new CafeNotFoundException("No cafe found with specified rating range : "+min+"-"+max);

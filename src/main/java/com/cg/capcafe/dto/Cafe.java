@@ -1,6 +1,7 @@
 package com.cg.capcafe.dto;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -40,7 +41,7 @@ public class Cafe {
 	private String owner;
 	
 	@ElementCollection
-	private List<String> cuisine;
+	private Set<String> cuisine;
 	
 	private double account;
 	
@@ -50,19 +51,19 @@ public class Cafe {
 	@Column(name= "avg_price")
 	private int avgPrice;
 	
-	@OneToMany(fetch = FetchType.LAZY,
+	@OneToMany(fetch = FetchType.EAGER,
 			   cascade = CascadeType.ALL)
 	@JoinColumn(name = "cafe_id")
-	private List<Review> reviews;
+	private Set<Review> reviews;
 	
 	@ManyToMany(fetch = FetchType.EAGER,
 			   cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	@JoinTable(name = "cafe_item", joinColumns = {@JoinColumn(name="cafe_id", referencedColumnName = "cafe_id")},
 	 inverseJoinColumns = {@JoinColumn(name = "item_id", referencedColumnName = "item_id")})
-	private List<FoodItem> menu;
+	private Set<FoodItem> menu;
 
-	public Cafe(int cafeId, String name, String location, String owner, List<String> cuisine, double account,
-			double avgRating, int avgPrice, List<Review> reviews, List<FoodItem> menu) {
+	public Cafe(int cafeId, String name, String location, String owner, Set<String> cuisine, double account,
+			double avgRating, int avgPrice, Set<Review> reviews, Set<FoodItem> menu) {
 		super();
 		this.cafeId = cafeId;
 		this.name = name;
@@ -110,11 +111,11 @@ public class Cafe {
 		this.owner = owner;
 	}
 
-	public List<String> getCuisine() {
+	public Set<String> getCuisine() {
 		return cuisine;
 	}
 
-	public void setCuisine(List<String> cuisine) {
+	public void setCuisine(Set<String> cuisine) {
 		this.cuisine = cuisine;
 	}
 
@@ -142,19 +143,19 @@ public class Cafe {
 		this.avgPrice = avgPrice;
 	}
 
-	public List<Review> getReviews() {
+	public Set<Review> getReviews() {
 		return reviews;
 	}
 
-	public void setReviews(List<Review> reviews) {
+	public void setReviews(Set<Review> reviews) {
 		this.reviews = reviews;
 	}
 
-	public List<FoodItem> getMenu() {
+	public Set<FoodItem> getMenu() {
 		return menu;
 	}
 
-	public void setMenu(List<FoodItem> menu) {
+	public void setMenu(Set<FoodItem> menu) {
 		this.menu = menu;
 	}
 
