@@ -67,7 +67,7 @@ public class Employee {
 	private Set<Ticket> ticketsRaised;
 
 	public Employee(int empId, int capgeminiId, String email, String password, double wallet, Set<Review> pastReviews,
-			Set<Order> pastOrders, String name, String gender, LocalDate subscriptionDate) {
+			Set<Order> pastOrders, String name, String gender, LocalDate subscriptionDate, Set<Ticket> ticketsRaised) {
 		super();
 		this.empId = empId;
 		this.capgeminiId = capgeminiId;
@@ -79,9 +79,8 @@ public class Employee {
 		this.name = name;
 		this.gender = gender;
 		this.subscriptionDate = subscriptionDate;
+		this.ticketsRaised = ticketsRaised;
 	}
-	
-	public Employee() {}
 
 	public int getEmpId() {
 		return empId;
@@ -163,6 +162,14 @@ public class Employee {
 		this.subscriptionDate = subscriptionDate;
 	}
 
+	public Set<Ticket> getTicketsRaised() {
+		return ticketsRaised;
+	}
+
+	public void setTicketsRaised(Set<Ticket> ticketsRaised) {
+		this.ticketsRaised = ticketsRaised;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -172,10 +179,6 @@ public class Employee {
 		result = prime * result + empId;
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((subscriptionDate == null) ? 0 : subscriptionDate.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(wallet);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
@@ -197,6 +200,11 @@ public class Employee {
 			return false;
 		if (empId != other.empId)
 			return false;
+		if (gender == null) {
+			if (other.gender != null)
+				return false;
+		} else if (!gender.equals(other.gender))
+			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -209,11 +217,10 @@ public class Employee {
 	public String toString() {
 		return "Employee [empId=" + empId + ", capgeminiId=" + capgeminiId + ", email=" + email + ", password="
 				+ password + ", wallet=" + wallet + ", pastReviews=" + pastReviews + ", pastOrders=" + pastOrders
-				+ ", name=" + name + ", gender=" + gender + ", subscriptionDate=" + subscriptionDate + "]";
+				+ ", name=" + name + ", gender=" + gender + ", subscriptionDate=" + subscriptionDate
+				+ ", ticketsRaised=" + ticketsRaised + "]";
 	}
-	
-	
-	
+
 	
 	
 
