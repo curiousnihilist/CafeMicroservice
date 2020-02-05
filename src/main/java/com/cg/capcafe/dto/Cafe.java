@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -40,9 +41,6 @@ public class Cafe {
 	@Column(length = 20)
 	private String owner;
 	
-	@ElementCollection
-	private Set<String> cuisine;
-	
 	private double account;
 	
 	@Column(name = "avg_rating")
@@ -62,22 +60,22 @@ public class Cafe {
 	 inverseJoinColumns = {@JoinColumn(name = "item_id", referencedColumnName = "item_id")})
 	private Set<FoodItem> menu;
 
-	public Cafe(int cafeId, String name, String location, String owner, Set<String> cuisine, double account,
+	
+	public Cafe() {}
+	
+	public Cafe(int cafeId, String name, String location, String owner, double account,
 			double avgRating, int avgPrice, Set<Review> reviews, Set<FoodItem> menu) {
 		super();
 		this.cafeId = cafeId;
 		this.name = name;
 		this.location = location;
 		this.owner = owner;
-		this.cuisine = cuisine;
 		this.account = account;
 		this.avgRating = avgRating;
 		this.avgPrice = avgPrice;
 		this.reviews = reviews;
 		this.menu = menu;
 	}
-	
-	public Cafe() {}
 
 	public int getCafeId() {
 		return cafeId;
@@ -109,14 +107,6 @@ public class Cafe {
 
 	public void setOwner(String owner) {
 		this.owner = owner;
-	}
-
-	public Set<String> getCuisine() {
-		return cuisine;
-	}
-
-	public void setCuisine(Set<String> cuisine) {
-		this.cuisine = cuisine;
 	}
 
 	public double getAccount() {
@@ -159,6 +149,7 @@ public class Cafe {
 		this.menu = menu;
 	}
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -202,9 +193,11 @@ public class Cafe {
 	@Override
 	public String toString() {
 		return "Cafe [cafeId=" + cafeId + ", name=" + name + ", location=" + location + ", owner=" + owner
-				+ ", cuisine=" + cuisine + ", account=" + account + ", avgRating=" + avgRating + ", avgPrice="
+				+ ", account=" + account + ", avgRating=" + avgRating + ", avgPrice="
 				+ avgPrice + ", reviews=" + reviews + ", menu=" + menu + "]";
 	}
+	
+	
 	
 	
 }

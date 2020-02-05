@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 /**
  * Entity class for storing employee details.
@@ -66,6 +67,8 @@ public class Employee {
 	@Column(name = "tickets_raised")
 	private Set<Ticket> ticketsRaised;
 
+	public Employee() {}
+	
 	public Employee(int empId, int capgeminiId, String email, String password, double wallet, Set<Review> pastReviews,
 			Set<Order> pastOrders, String name, String gender, LocalDate subscriptionDate, Set<Ticket> ticketsRaised) {
 		super();
