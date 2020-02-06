@@ -102,4 +102,13 @@ public class CafeServiceImpl implements CafeService{
 		return cafes;
 	}
 
+	@Override
+	public List<Cafe> searchFood(String location, String name) throws CafeNotFoundException {
+		name = "%" + name + "%";
+		List<Cafe> cafes = cafeRepo.searchFood(location, name);
+		if(cafes.isEmpty())
+			throw new CafeNotFoundException("No Cafe found for  given search criteria!");
+		return cafes;
+	}
+
 }

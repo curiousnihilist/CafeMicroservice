@@ -141,5 +141,18 @@ public class CafeController {
 		return cafeService.searchByPricing(min, max);
 	}
 	
+	
+	/**
+	 * Get Mapping method for fetching cafe based on location and name.
+	 * @param location
+	 * @param name
+	 * @return list of cafe
+	 * @throws CafeNotFoundException
+	 */
+	@GetMapping(value = "/get-food")
+	public List<Cafe> getFood(@RequestParam String location, @RequestParam String name) throws CafeNotFoundException{
+		return cafeService.searchFood(location, name);
+	}
+	
 
 }

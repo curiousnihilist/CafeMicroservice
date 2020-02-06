@@ -92,5 +92,13 @@ public interface CafeService {
 	 */
 	List<Cafe> searchByMenu(String foodItem) throws CafeNotFoundException;
 	
+	/**
+	 * Method for searching food for customer by location and cafe name
+	 * @param location
+	 * @param name
+	 * @return List of cafe
+	 * @throws CafeNotFoundException
+	 */
+	List<Cafe> searchFood(String location, String name) throws CafeNotFoundException;
 
 }

@@ -25,4 +25,7 @@ public interface CafeRepository extends JpaRepository<Cafe, Integer> {
 	
 	@Query("SELECT c FROM Cafe c JOIN FETCH c.menu m WHERE m.name = ?1")
 	List<Cafe> findByMenu(String foodItem);
+	
+	@Query("SELECT c FROM Cafe c WHERE c.location = ?1 AND c.name LIKE ?2")
+	List<Cafe> searchFood(String location, String name );
 }
